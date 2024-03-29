@@ -26,7 +26,7 @@ def login():
     if request.method=='POST':
         username=request.form['username']
         password=request.form['passwd']
-        cursor.execute("select * from users where username='{0}' and password='{1}'".format(username,methods.sha256(password)))
+        cursor.execute("select * from users where username='{0}' and passwd='{1}'".format(username,methods.sha256(password)))
         data = cursor.fetchall()
         if(data):
             resp=make_response(redirect('/'))
