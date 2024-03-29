@@ -66,9 +66,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": 3165.6537420186114,
-			"y": 10.323934549035705,
-			"lastActivityTimestamp": 1711719659457,
+			"x": 2852.0062439370104,
+			"y": 25.25952969577862,
+			"lastActivityTimestamp": 1711719774747,
 			"meta": {}
 		},
 		{
@@ -144,14 +144,17 @@
 			"isFocused": true,
 			"devicePixelRatio": 1,
 			"isCoarsePointer": false,
-			"isHoveringCanvas": true,
-			"openMenus": [],
+			"isHoveringCanvas": false,
+			"openMenus": [
+				"pages",
+				"page-menu"
+			],
 			"isChangingStyle": false,
 			"isReadonly": false,
 			"meta": {},
 			"duplicateProps": null,
 			"id": "instance:instance",
-			"currentPageId": "page:NPXvzexfozwdaSZLovaoC",
+			"currentPageId": "page:EeOAJRAvrQL4DCiMJ7nPR",
 			"typeName": "instance"
 		},
 		{
