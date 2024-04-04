@@ -17,11 +17,11 @@ app=Flask(__name__)
 def home():
     return render_template('home.html',title='home')
 
-@app.route('/signin')
+@app.route('/login')
 def signin():
     return render_template('login.html',title="signin-pg")
 
-@app.route('/login',methods=['POST'])
+@app.route('/logging',methods=['POST'])
 def login():
     if request.method=='POST':
         username=request.form['username']
@@ -34,6 +34,23 @@ def login():
             return resp       
 
     return redirect(url_for('home'))
+
+@app.route('/registration',method=['POST'])
+def registration():
+    if request.method=='POST':
+        username=request.form['username']
+        fname=request.form['fname']
+        phone=request.form['phone']
+        email=request.form['email']
+        address=request.form['address']
+        authority=request.form['admin']
+        passwd=request.form['passwd']
+        repasswd=request.form['repasswd']
+        if passwd==repasswd:
+            sOTP=methods.sendOTP(phone)
+        else:
+            redirect('/')
+
 
 if __name__ == '__main__':
     app.run(port=5000,debug=True)
