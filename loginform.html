@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoginForm</title>
+    <link rel="stylesheet" href="style1.css"/>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Login Form</h1>
+        <form id="loginform">
+            <div class="form elements">
+                <label for="username"><b>Username : </b></label>
+                <input type="text" placeholder="enter your username" id="username" required>
+               
+            </div>
+            <div class="form elements">
+                <label for="password"><b>Password : </b></label>
+                <input type="password" placeholder="enter your password" id="password" required>
+                
+            </div>
+            <div class="form elements">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+        <p>Don't have an account? <a href="#" id="signuplink">Sign Up</a></p>
+    </div>
+
+    <div id="signupForm" style="display: none;" class="elements">
+        <h2>Sign Up</h2>
+        <form>
+            <div class="form elements">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" placeholder="fullName" required>
+            </div>
+            <div class="form elements">
+                <label for="newUsername">Username (Unique)</label>
+                <input type="text" id="newUsername" placeholder="newUsername" required>
+            </div>
+            <div class="form elements">
+                <label for="newPassword">Password</label>
+                <input type="password" id="newPassword" placeholder="newPassword" required>
+            </div>
+            <div class="form elements">
+                <label for="phone">Phone No.</label>
+                <input type="text" id="phone" placeholder="phone" required>
+            </div>
+            <div class="form elements">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="email" required>
+            </div>
+            <div class="form elements">
+                <label for="address">Address</label>
+                <textarea id="address" placeholder="address" required></textarea>
+            </div>
+            <div class="form elements">
+                <button type="submit">Sign Up</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
