@@ -1,21 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library</title>
-    <link rel="stylesheet" href="../static/style.css">
-</head>
-<body>
-    <div class="home">
-        <div class="head">
-            <h1>LIBRARY MANAGEMENT SYSTEM</h1>
-        </div>
-        <div class="links">
-            <a href="{{url_for("signin")}}">SignIn</a>
-            <!-- <div class="hline"></div> -->
-            <a href="#">SignUp</a>
-        </div>
+{% extends "layout.html" %}
+{% block content %}
+<div class="srch-bar">
+    <input type="search" placeholder="search books...">
+    <i class="fa-solid fa-magnifying-glass"></i>
+</div>
+<div class="disp-book">
+    <p>New Books!</p>
+</div>
+<!-- <div class="home">
+    <div class="head">
+        <h1>LIBRARY MANAGEMENT SYSTEM</h1>
     </div>
-</body>
-</html>
+    <div class="links">
+        <a href="{{url_for("signin")}}">SignIn</a>
+        <a href="#">SignUp</a>
+    </div>
+</div> -->
+
+{% endblock %}

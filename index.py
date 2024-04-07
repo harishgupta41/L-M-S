@@ -19,7 +19,15 @@ def home():
 
 @app.route('/login')
 def signin():
-    return render_template('login.html',title="signin-pg")
+    return render_template('login.html',title="login-pg")
+
+@app.route('/register')
+def register():
+    return render_template('registration.html',title="registration-pg")
+
+@app.route('/myProfile')
+def myProfile():
+    return render_template('userprofile.html',title="myProfile")
 
 @app.route('/logging',methods=['POST'])
 def login():
@@ -35,7 +43,7 @@ def login():
 
     return redirect(url_for('home'))
 
-@app.route('/registration',method=['POST'])
+@app.route('/registration',methods=['POST'])
 def registration():
     if request.method=='POST':
         username=request.form['username']

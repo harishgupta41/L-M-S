@@ -1,6 +1,6 @@
 
 .main-info{
-    margin top : auto;
+    margin-top : auto;
     height : 600px;
     width : 100%;
     border : 0px solid;
@@ -65,11 +65,11 @@
 }
 
 button:hover{
-    background-color: ;
+    /* background-color: ; */
     box-shadow: 4px 4px 10px black;
 
 }
 @media(max-width:400px){
-    flex-wrap: wrap;
-    display: block-flex;
+    /* display : block-flex;
+    flex-wrap:;; */
 }
