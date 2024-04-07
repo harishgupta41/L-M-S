@@ -2,6 +2,9 @@ import hashlib
 import vonage
 import random
 
+# variable for storing OTP
+otp = 123456
+
 # password hashing
 def sha256(data):
     data=bytes(data,'utf-8')
@@ -18,12 +21,15 @@ def sendOTP(phone):
     responseData = sms.send_message(
         {
             "from": "LMS",
-            "to": "919650859575",
+            "to": phone,
             "text": "Your OTP for LMS registration is {0}.Do not share!".format(otp),
         }
     )
     if responseData["messages"][0]["status"] == "0":
         return otp
+
+def sentOtpToClient():
+    return otp
 
 def verifyOTP(sOTP,rOTP):
     if (sOTP==rOTP):

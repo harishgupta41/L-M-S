@@ -47,6 +47,7 @@ def login():
 def registration():
     if request.method=='POST':
         username=request.form['username']
+        print(username)
         fname=request.form['fname']
         phone=request.form['phone']
         email=request.form['email']
@@ -59,6 +60,11 @@ def registration():
         else:
             redirect('/')
 
-
+@app.route('/fetchOtp', methods=['GET'])
+def fetcOtpApi():
+    if request.method == 'GET':
+        otp = methods.sentOtpToClient()
+        return otp
+    
 if __name__ == '__main__':
     app.run(port=5000,debug=True)
