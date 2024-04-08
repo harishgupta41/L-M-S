@@ -1,4 +1,4 @@
-from flask import Flask,redirect,url_for,render_template,request,make_response
+from flask import Flask,redirect,url_for,render_template,request,make_response,session
 import mysql.connector
 import uuid
 import methods
@@ -11,6 +11,7 @@ cursor=mydb.cursor()
 
 # flask app
 app=Flask(__name__)
+app.secret_key='librarymanagementsystemsecretkey'
 
 @app.route('/')
 @app.route('/home')
@@ -40,31 +41,43 @@ def login():
             resp=make_response(redirect('/'))
             resp.set_cookie('user',username)
             return resp       
-
     return redirect(url_for('home'))
 
 @app.route('/registration',methods=['POST'])
 def registration():
     if request.method=='POST':
-        username=request.form['username']
-        print(username)
-        fname=request.form['fname']
-        phone=request.form['phone']
-        email=request.form['email']
-        address=request.form['address']
-        authority=request.form['admin']
+        data=[]
+        data.append(request.form['username'])
+        # print(username)
+        data.append(request.form['fname'])
+        data.append(request.form['phone'])
+        data.append(request.form['email'])
+        data.append(request.form['address'])
+        admin=request.form.get('admin')
+        admin="yes" if admin else "no"
+        data.append(admin)
+        data.append(request.form['passwd'])
         passwd=request.form['passwd']
         repasswd=request.form['repasswd']
         if passwd==repasswd:
-            sOTP=methods.sendOTP(phone)
+            sOTP=methods.sendOTP(data[2])
+            data.append(sOTP)
+            session['userdata']=data
+            return render_template("otpverify.html",title="otp-verification")
         else:
-            redirect('/')
+            return redirect('/')
 
-@app.route('/fetchOtp', methods=['GET'])
-def fetcOtpApi():
-    if request.method == 'GET':
-        otp = methods.sentOtpToClient()
-        return otp
+@app.route('/verifyOtp', methods=['GET','POST'])
+def verifyOtp():
+    if request.method == 'POST':
+        print(session['userdata'])
+        rotp= request.form['rotp']
+        if(rotp==session['userdata'][7]):
+            cursor.execute('insert into users values("{0}","{1}","{2}","{3}","{4}","{5}","{6}")'.format(session['userdata'][0],session['userdata'][1],session['userdata'][2],session['userdata'][3],methods.sha256(session['userdata'][6]),session['userdata'][4],session['userdata'][5]))
+            mydb.commit()
+            session.clear()
+            return redirect('/')
+        return redirect('/register')
     
 if __name__ == '__main__':
     app.run(port=5000,debug=True)

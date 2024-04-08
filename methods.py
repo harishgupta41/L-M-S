@@ -3,7 +3,7 @@ import vonage
 import random
 
 # variable for storing OTP
-otp = 123456
+# otp = 123456
 
 # password hashing
 def sha256(data):
@@ -28,8 +28,7 @@ def sendOTP(phone):
     if responseData["messages"][0]["status"] == "0":
         return otp
 
-def sentOtpToClient():
-    return otp
+
 
 def verifyOTP(sOTP,rOTP):
     if (sOTP==rOTP):
